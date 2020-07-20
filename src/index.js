@@ -17,7 +17,7 @@ const Root = (
         <Route path="/details/:itemId" component={Details} />
         <Route path="/inicio" component={Inicio} />
         <Route path="/descubrir" component={Descubrir} />
-        <Redirect from= "/" to="/descubrir" />
+        <Redirect from= "/" to="/inicio" />
     </Switch>
     </BrowserRouter>
     </Provider>
