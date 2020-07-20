@@ -1,0 +1,75 @@
+#navbar{
+  background-color: #ECE2C6;
+
+}
+#iconNav1{
+  
+  font-size: 23px;
+  color:#81a2ac;
+  margin-right: 10px;
+  margin-left: 60px;
+  
+  
+}
+
+#Selecion{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: rgb(148, 181, 190);
+
+}
+#Selecion1{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: red;
+
+}
+#iconNav{
+  
+  font-size: 23px;
+  color:#81a2ac;
+  margin-right: 10px;
+  margin-left: 20px;
+  
+  
+}
+
+#filtro{
+  color:#1d5563;
+ }
+
+
+
+/*#black{
+    background-color: yellow;
+    margin-left: 40px;
+  }
+  #black2{
+    background-color: yellow;
+
+  }
+#buscador{
+  width: 600px;
+ 
+}
+
+#iconNav{
+  
+  font-size: 23px;
+  color:#9D8F04;
+  margin-right: 10px;
+  
+  
+}
+#iconNav2{
+  font-size: 23px;
+  color:#9D8F04;
+  margin-right: 10px;
+  margin-left: 160px;
+  
+  
+}
+#naVbar{
+  background-color: #002147;
+}
+*/

@@ -1,0 +1,125 @@
+
+.carousel-nav-icon {
+   height: 48px;
+   width: 48px;
+}
+#containerP{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#imagen {margin: 2px;
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+   }
+   .carousel-item {
+    margin: 8px;
+    
+    height: 200px;
+    background-size: cover;
+    background-position: center center;
+   }
+   
+   #fondoT1 {
+      background-color: #ECE2C6;
+      
+   }
+   #transicion:hover {
+    border: solid 5px transparent  ;
+    border-color: #E9ECEF;
+      }
+   
+   #filtro{
+    color:#1d5563;
+   }
+   #containerP
+   #fondoT {
+       padding-left: 7px;
+       padding-top: 4px;
+       padding-right: 7px;
+  
+   
+    color:#1d5563;
+    background-color: #ECE2C6;
+    border: 2px solid #ECE2C6;
+    border-radius: 5px;
+ }
+ #textFT{color:#46727e;}
+   @media (min-width: 576px) {
+      .card-columns {
+          column-count: 2;
+      }
+  }
+  
+  @media (min-width: 768px) {
+      .card-columns {
+          column-count: 3;
+      }
+  }
+  
+  @media (min-width: 992px) {
+      .card-columns {
+          column-count: 4;
+      }
+  }
+  
+  @media (min-width: 1200px) {
+      .card-columns {
+          column-count: 5;
+      }
+  }
+  .card-img-top{
+   height: 40%;
+  width: auto;
+  border: none;
+  padding: 0.25em 0.5em;
+  border-radius: 1px;
+  background: #ECE2C6;
+  
+  }
+  .card-body{
+      background-color: #E7E7E7;
+      width: auto;
+      border-color:  #ECE2C6;
+     
+      border-radius: 1px ;
+      border-top: 3px solid #ECE2C6;
+      text-align: center;
+      
+  }
+  #pagItem {
+    background: #E9ECEF;
+  }
+  #nombreCard {
+      color: #ddab21;
+  }
+ 
+
+  #buttonMenu{
+      margin-bottom: 5px;
+      
+  }
+ #nombreMenV {
+    color: #46727e;
+    border-bottom-style: solid;
+    border-width: medium;
+    border-color: #E9ECEF;
+    font-size: 22px;
+    
+
+ }
+ .pagination {
+     margin-top: 10px;
+ }
+ #nombre2MenV{
+    color: #46727e;
+    font-size: 18px;
+ }
+ #nombre2MenV:hover{
+    color: #46727e;
+    font-size: 19px;
+    border-bottom-style: solid;
+    border-width: medium;
+    border-color: #E9ECEF;
+ }
