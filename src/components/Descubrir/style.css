@@ -26,7 +26,8 @@
       
    }
    #transicion:hover {
-    border: solid 5px transparent  ;
+    border: solid 3px transparent  ;
+    
     border-color: #E9ECEF;
       }
    

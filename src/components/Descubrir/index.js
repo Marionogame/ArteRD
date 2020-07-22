@@ -2,7 +2,11 @@ import React, {Component, Fragment } from 'react';
 import Page from './page';
 import { connect } from 'react-redux';
 import {categoria} from './menuV';
-import {buscadorImagen, buscarImagenError} from '../../redux/actions/buscadorImagen'
+import {buscadorImagen} from '../../redux/actions/buscadorImagen';
+
+
+
+
 class Descubrir extends Component {
     constructor(props) {
         super(props);
@@ -24,23 +28,27 @@ this.props.buscadorImagen("esculturas");
 handleClick(){
    this.props.buscadorImagen(categoria);
  
- console.log(categoria);
+ 
 
 }
 
 render() {
     const {buscarImagen} = this.props;
+    const {buscarDatosImagen} = this.props;
     const {categoria} = this.state;
+ 
+   
            if (buscarImagen.length === 0){
                 return "cargando"
              }
-           
+         
    
         return (
             <Fragment>
             
             <Page
              buscarImagen={buscarImagen}
+             buscarDatosImagen={buscarDatosImagen}
              handleClick={this.handleClick}
              categoria={categoria}
             />
@@ -52,6 +60,8 @@ render() {
 const mapStateToProps = (state) => {
     return {
         buscarImagen: state.buscarImagen,
+        buscarDatosImagen: state.buscarImagenDatos,
+
 
     };
 };

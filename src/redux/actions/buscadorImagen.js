@@ -1,4 +1,6 @@
 import { createAction } from "redux-actions";
+import { connect } from 'react-redux';
+import {buscarImagenDatos} from "./buscadorImagenDatos";
 const axios = require('axios');
 
 export const buscarImagenSuccess = createAction('buscarImagenSuccess');
@@ -14,6 +16,9 @@ export const buscadorImagen = (CategoriaS) => async (dispatch) =>{
      let res = await axios.get('http://localhost:3000/producto');
     let {data}  = res.data;
     var listaImagen = [];
+    var listaImagenNombre = [];
+    var listaImagenPrecio= [];
+    var listaImagenUsuarios= [];
     var imagenesCategoria = [];
     data.filter(ImagenList => ImagenList.categoria === CategoriaS).map( filteredImagen => (
    
@@ -22,13 +27,13 @@ export const buscadorImagen = (CategoriaS) => async (dispatch) =>{
     ))
     
     for (var i = 0; i < imagenesCategoria.length ; i++) {
-
+      listaImagenNombre.push(imagenesCategoria[i].nombre);
+      listaImagenPrecio.push(imagenesCategoria[i].precio);
+      listaImagenUsuarios.push(imagenesCategoria[i].id_usuario);
       listaImagen.push(imagenesCategoria[i].imagen);
       // listaImagen.push(data[Math.floor(Math.random() *  data.length-1) + 0].imagen);
    }
- console.log(listaImagen)
-
-  
+   dispatch(buscarImagenDatos(listaImagenNombre,listaImagenPrecio,listaImagenUsuarios));
     dispatch(buscadorImagenBlob(listaImagen));
   } catch (error) {
       console.log("(Error action buscadorImagen)",error);
@@ -36,6 +41,11 @@ export const buscadorImagen = (CategoriaS) => async (dispatch) =>{
 }
 
 
+const mapDispatchToProps = {
+
+  buscarImagenDatos,
+};
+export default connect( mapDispatchToProps);
 
 
 export const buscadorImagenBlob = (listaImagen) => async (dispatch) =>{
@@ -52,8 +62,9 @@ export const buscadorImagenBlob = (listaImagen) => async (dispatch) =>{
      imagenes.push(data);
 
     }  
-    console.log(imagenes)
+    
     dispatch(buscarImagenSuccess(imagenes));
+   
   } catch (error) {
       console.log("(Error action buscadorImagenBlob)");
   }

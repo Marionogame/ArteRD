@@ -12,8 +12,15 @@ function Page(props) {
       buscarImagen,
       handleClick,
       categoria,
+      buscarDatosImagen,
   } = props;
+
   const mario = true;
+  var nombre = buscarDatosImagen[0];
+  var precio = buscarDatosImagen[1];
+  var usuario = buscarDatosImagen[2];
+  var contador = -1;
+
     return (
         <Fragment>
             <AppBar />
@@ -53,13 +60,13 @@ function Page(props) {
 </nav>
            <div className="card-columns"> 
            <div > {buscarImagen.map(buscarImagen => 
-                //"card-columns"
+            
   <div className="card"  id="transicion" >
     <img className="card-img-top embed-responsive-item" key={buscarImagen} src={buscarImagen} alt="Card image cap"/>
     <div className="card-body">
-      <h5 className="card-title">La anaconda</h5>
-      <h5 className="card-title" id="nombreCard">Jose Miguel Rodriguez</h5>
-      <p className="card-title text-success">RD$ 55.0</p>
+      <h5 className="card-title">{nombre[contador=contador+1]} </h5>
+      <h5 className="card-title" id="nombreCard">{usuario[contador]} </h5>
+      <p className="card-title text-success">{precio[contador]} </p>
     </div>
   </div>
   
