@@ -7,6 +7,7 @@ import Results from './components/results';
 import Details from './components/details';
 import Inicio from './components/inicio';
 import Descubrir from './components/Descubrir';
+import Login from './components/Login';
 import './include/Bootstrap';
 
 const Root = (
@@ -17,6 +18,7 @@ const Root = (
         <Route path="/details/:itemId" component={Details} />
         <Route path="/inicio" component={Inicio} />
         <Route path="/descubrir" component={Descubrir} />
+        <Route path="/Login" component={Login} />
         <Redirect from= "/" to="/inicio" />
     </Switch>
     </BrowserRouter>

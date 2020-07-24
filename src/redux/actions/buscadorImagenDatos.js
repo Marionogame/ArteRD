@@ -14,6 +14,7 @@ export const buscarImagenDatosError = createAction('buscarImagenDatosError');
         let {data}  = res.data;
     
       for (var i = 0; i < listaImagenUsuarios.length; i++) {
+        // eslint-disable-next-line no-loop-func
         data.filter(data => data.id === listaImagenUsuarios[i]).map(filterNombre => (
    
           NombreUsuario.push (filterNombre.nombre)

@@ -39,7 +39,7 @@ function Page(props) {
                 
       
       <div id='iconNav1'><FontAwesomeIcon icon={faCartArrowDown}/></div>
-      <div id='iconNav'><FontAwesomeIcon icon={faUser}/></div>
+      <div id='iconNav' onClick={() => goTo('/Login')}><FontAwesomeIcon icon={faUser}/></div>
     </form>
   </div>
 </nav>

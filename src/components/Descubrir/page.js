@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
-import ojosNoticia from '../../img/ojosNoticia.jpg';
-import ArtistaPintando from '../../img/ArtistaPintando.jpg';
+
 import AppBar from '../appBar';
 import {MenuV} from './menuV';
 import './style.css';
 import Footer from '../footer';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faChevronRight,faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+
 function Page(props) {
    const {
       buscarImagen,
@@ -15,7 +13,6 @@ function Page(props) {
       buscarDatosImagen,
   } = props;
 
-  const mario = true;
   var nombre = buscarDatosImagen[0];
   var precio = buscarDatosImagen[1];
   var usuario = buscarDatosImagen[2];
