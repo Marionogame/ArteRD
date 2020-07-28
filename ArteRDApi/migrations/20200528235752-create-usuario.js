@@ -44,6 +44,9 @@ module.exports = {
       redes3: {
         type: Sequelize.STRING
       },
+      coleccion: {
+        type: Sequelize.STRING
+      },
       imagen_perfil: {
         type: Sequelize.STRING
       },

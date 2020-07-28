@@ -12,7 +12,7 @@ const usuariosHandler = async (request, h) => {
  
 const createUsuarioHandler = async (request, h) => {
     try {
-        const { nombre,apellido,apellido2,nombre_usuario,contrasena,edad,genero,numero,correo,redes1,redes2,redes3,
+        const { nombre,apellido,apellido2,nombre_usuario,contrasena,edad,genero,numero,correo,redes1,redes2,redes3,coleccion,
         imagen_perfil} = request.payload;
         const usuario = await Models.Usuario.create({
             nombre:nombre,
@@ -27,6 +27,7 @@ const createUsuarioHandler = async (request, h) => {
     redes1:redes1,
     redes2:redes2,
     redes3:redes3,
+    coleccion:coleccion,
     imagen_perfil:imagen_perfil
         })
         return {
@@ -43,7 +44,7 @@ const createUsuarioHandler = async (request, h) => {
 const updateUsuarioHandler = async (request, h) => {
     try {
         const usuario_id = request.params.id;
-        const { nombre,apellido,apellido2,nombre_usuario,contrasena,genero,edad,numero,correo,redes1,redes2,redes3,
+        const { nombre,apellido,apellido2,nombre_usuario,contrasena,genero,edad,numero,correo,redes1,redes2,redes3,coleccion,
             imagen_perfil } = request.payload;
         const usuario = await Models.Usuario.update({
             nombre:nombre,
@@ -58,6 +59,7 @@ const updateUsuarioHandler = async (request, h) => {
             redes1:redes1,
             redes2:redes2,
             redes3:redes3,
+            coleccion:coleccion,
             imagen_perfil:imagen_perfil
         }, {
                 where: {
@@ -111,6 +113,7 @@ module.exports = [
             redes1: Joi.string(),
             redes2: Joi.string(),
             redes3: Joi.string(),
+            coleccion:Joi.string(),
             imagen_perfil: Joi.string()
         }),
         failAction: (request, h, error) => {
@@ -134,6 +137,7 @@ module.exports = [
             redes1: Joi.string().optional(),
             redes2: Joi.string().optional(),
             redes3: Joi.string().optional(),
+            coleccion:Joi.string(),
             imagen_perfil: Joi.string().optional()
         }),
         failAction: (request, h, error) => {

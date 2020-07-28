@@ -45,7 +45,7 @@ const mapDispatchToProps = {
 
   buscarImagenDatos,
 };
-export default connect( mapDispatchToProps);
+export default connect(mapDispatchToProps);
 
 
 export const buscadorImagenBlob = (listaImagen) => async (dispatch) =>{

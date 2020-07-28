@@ -1,6 +1,6 @@
 import React, {Component, Fragment } from 'react';
 import Page from './page';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {categoria} from './menuV';
 import {buscadorImagen} from '../../redux/actions/buscadorImagen';
 

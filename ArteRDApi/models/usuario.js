@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     redes1: DataTypes.STRING,
     redes2: DataTypes.STRING,
     redes3: DataTypes.STRING,
+    coleccion: DataTypes.STRING,
     imagen_perfil: DataTypes.STRING
   }, {});
   Usuario.associate = function(models) {
