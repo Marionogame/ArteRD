@@ -8,6 +8,7 @@ import Details from './components/details';
 import Inicio from './components/inicio';
 import Descubrir from './components/Descubrir';
 import Login from './components/Login';
+import Registrar from './components/registrar';
 import './include/Bootstrap';
 
 const Root = (
@@ -19,6 +20,7 @@ const Root = (
         <Route path="/inicio" component={Inicio} />
         <Route path="/descubrir" component={Descubrir} />
         <Route path="/Login" component={Login} />
+        <Route path="/registrar" component={Registrar} />
         <Redirect from= "/" to="/inicio" />
     </Switch>
     </BrowserRouter>

@@ -12,12 +12,11 @@ const usuariosHandler = async (request, h) => {
  
 const createUsuarioHandler = async (request, h) => {
     try {
-        const { nombre,apellido,apellido2,nombre_usuario,contrasena,edad,genero,numero,correo,redes1,redes2,redes3,coleccion,
+        const { nombre,apellido,nombre_usuario,contrasena,edad,genero,numero,correo,redes1,redes2,redes3,coleccion,
         imagen_perfil} = request.payload;
         const usuario = await Models.Usuario.create({
             nombre:nombre,
     apellido:apellido,
-    apellido2:apellido2,
     nombre_usuario:nombre_usuario,
     contrasena:contrasena,
     edad:edad,
@@ -44,12 +43,11 @@ const createUsuarioHandler = async (request, h) => {
 const updateUsuarioHandler = async (request, h) => {
     try {
         const usuario_id = request.params.id;
-        const { nombre,apellido,apellido2,nombre_usuario,contrasena,genero,edad,numero,correo,redes1,redes2,redes3,coleccion,
+        const { nombre,apellido,nombre_usuario,contrasena,genero,edad,numero,correo,redes1,redes2,redes3,coleccion,
             imagen_perfil } = request.payload;
         const usuario = await Models.Usuario.update({
             nombre:nombre,
             apellido:apellido,
-            apellido2:apellido2,
             nombre_usuario:nombre_usuario,
             contrasena:contrasena,
             edad:edad,
@@ -103,7 +101,6 @@ module.exports = [
         payload: Joi.object({
             nombre: Joi.string().min(3).max(25).required(),
             apellido: Joi.string().min(3).max(25).required(),
-            apellido2: Joi.string().max(25).min(3),
             nombre_usuario: Joi.string().max(25).min(5).required(),
             contrasena:  Joi.string().min(6).max(20).required(),
             edad:Joi.date().required(),
@@ -127,7 +124,6 @@ module.exports = [
         payload: Joi.object({
             nombre: Joi.string().min(3).max(25).optional(),
             apellido: Joi.string().min(3).max(25).optional(),
-            apellido2: Joi.string().max(25).min(3).optional(),
             nombre_usuario: Joi.string().max(25).min(5).optional(),
             contrasena:  Joi.string().min(6).max(20).optional(),
             edad:Joi.date().optional(),

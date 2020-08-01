@@ -5,14 +5,14 @@ import { buscarDatosUserSuccess, buscarDatosUserError } from "../actions/verific
 export default handleActions ({
     [buscarDatosUserSuccess]: (state, actions) => {
         var datosUsuario = actions.payload;
-        
+
         return datosUsuario;
         
        
     },
     [buscarDatosUserError]: (state, actions) => {
-        console.log("mmm")
-        return [1,4,3];
+        
+        return [false];
     }
     
 

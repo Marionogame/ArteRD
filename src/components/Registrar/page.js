@@ -3,69 +3,117 @@ import './style.css';
 import AppBar from '../appBar';
 import face from '../../img/face.png';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUserTie,faKey} from '@fortawesome/free-solid-svg-icons';
+import {faUserTie,faUnlockAlt,faUsers,faLock,faPhoneSquareAlt,faCalendarAlt,faVenusMars,faUserTag} from '@fortawesome/free-solid-svg-icons';
+import Footer from '../footer';
 function Page(props) {
-  
+  const {
+    isNumberKey,
+    SoloNumero
+} = props;
+
     return (
       <Fragment>
       <AppBar/>
       
-  <div class="modal-dialog text-center">
-    <div class="col-sm-12 main-section">
-      <div class="modal-content" id="modal-content">
+  <div className="container">
+    <div className="col-sm-7 main-section">
+      <div className="modal-content" id="modal-content">
 
-        <div class="col-12 user-img">
+        <div className="col-12 text-center user-img">
           <img src= {face}/>
         </div>
 
-        <div class="col-12 form-input">
-      <form>
-         
-      <div class="form-group row">
-        
-          <span id="icon"><FontAwesomeIcon icon={faUserTie}/></span>
-          <div class="col-sm-9">
-              <input type="email" class="form-control" placeholder="Usuario"/>
-            </div></div>
-          
-            <div class="form-group row">
-            <span id="icon1"><FontAwesomeIcon icon={faKey}/></span>
-            <div class="col-sm-9">
-              <input type="password" class="form-control" placeholder="Contraseña"/>
-            </div>
-            </div>
-          <button type="submit" class="btn btn-success">Login</button>
-          </form>
+        <div className="col-12 form-input">
+        <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <span id="icon"><FontAwesomeIcon icon={faUserTie}/></span>
+      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Completo"/>
+    </div>
+    <div class="form-group col-md-6">
+    <span id="icon"><FontAwesomeIcon icon={faUserTag}/></span>
+      <input type="text" class="form-control" id="inputApellido" placeholder="Apellido"/>
+    </div>
+  </div>
+  <div class="form-group">
+  <span id="icon"><FontAwesomeIcon icon={faUsers}/></span>
+    <input type="text" class="form-control" id="inputUsuario" placeholder="Nombre Usuario"/>
+  </div>
+  <div class="form-group">
+  <span id="icon"><FontAwesomeIcon icon={faUnlockAlt}/></span>
+    <input type="password" class="form-control" id="inputContrasena" placeholder="Contrasena"/>
+  </div>
+  <div class="form-group">
+  <span id="icon"><FontAwesomeIcon icon={faLock}/></span>
+    <input type="password" class="form-control" id="inputConfirmarContrasena" placeholder="Confirmar Contrasena"/>
+  </div>
+  <div class="form-group">
+  <span id="icon"><FontAwesomeIcon icon={faPhoneSquareAlt}/></span>
+    <input type="text" class="form-control" id="inputTelefono"  placeholder="Telefono (Solo Numero)"/>
+  </div>
+
+  
+
+  <span id="icon"><FontAwesomeIcon icon={faCalendarAlt}/></span>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+    
+     <h5><label for="inputState">Dias</label></h5> 
+      <select id="inputState" class="form-control">
+        <option selected>Dias</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+    <h5><label for="inputState">Mes</label></h5>
+      <select id="inputState" class="form-control">
+        <option selected>Mes</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+    <h5> <label for="inputState">Años</label></h5>
+      <select id="inputState" class="form-control">
+        <option selected>Años</option>
+        <option>...</option>
+      </select>
+    </div>
+  </div>
+  <span id="icon"><FontAwesomeIcon icon={faVenusMars}/></span>
+  <div class="form-group col-12 ">
+  <div class="form-check form-check-inline col-md-4">
+   
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+  <h5><label class="form-check-label" for="inlineRadio1">Mujer</label>
+  </h5>
+</div>
+<div class="form-check form-check-inline col-md-4">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+  <h5><label class="form-check-label" for="inlineRadio2">Hombre</label></h5>
+</div>
+<div class="form-check form-check-inline  col-md-3">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
+  <h5> <label class="form-check-label" for="inlineRadio3">Personalizado</label></h5>
+</div>
+  </div>
+  <div class="col-12 " >
+  <button className="btn btn-success" type="button">Registrarte</button>
+  </div>
+</form>
         </div>
-
-        <div class="col-12 forgot">
-          <a href="#">Forgot Password?</a>
-    </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal-dialog text-center">
-    <div class="col-sm-12 ">
-      <div id="modal-content">
-
-        <div class="col-12 forgot1"> 
-        <h5>¿No tienes una cuenta?  <a href="/" id="Registrate">Regístrate</a></h5>
         
-    </div>
-
+    
       </div>
     </div>
   </div>
 
-
-
-
+  <Footer />
       </Fragment>
    );
     
 }
+
+
+
 
 export default Page;

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-
 import AppBar from '../appBar';
 import {MenuV} from './menuV';
 import './style.css';

@@ -14,9 +14,6 @@ module.exports = {
       apellido: {
         type: Sequelize.STRING
       },
-      apellido2: {
-        type: Sequelize.STRING
-      },
       nombre_usuario: {
         type: Sequelize.STRING
       },

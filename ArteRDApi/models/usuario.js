@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuario', {
     nombre: DataTypes.STRING,
     apellido: DataTypes.STRING,
-    apellido2: DataTypes.STRING,
     nombre_usuario: DataTypes.STRING,
     contrasena: DataTypes.STRING,
     edad: DataTypes.DATE,

@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {buscadorUsuarios} from '../../redux/actions/verificacionLoginDatos';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserTie,faKey} from '@fortawesome/free-solid-svg-icons';
-
+import {Alert} from "reactstrap";
+import Footer from '../footer';
 
 
 class Login extends Component {
@@ -15,12 +16,14 @@ class Login extends Component {
         this.state = {
             contrasena: '',
             usuario: '',
+          alerta: false,
           
         };
         this.insertarContrasenaChange = this.insertarContrasenaChange.bind(this);
         this.insertarUsuarioChange = this.insertarUsuarioChange.bind(this);
         this.subirLogin = this.subirLogin.bind(this);
-      
+        this.redireccionar = this.redireccionar.bind(this);
+        
     
 }
 
@@ -28,31 +31,59 @@ class Login extends Component {
 
   insertarContrasenaChange(e) {
     this.setState({contrasena: e.target.value});
-   
  };
+
+ redireccionar(){
+   
+  this.props.history.push('/registrar');
+
+ }
  insertarUsuarioChange(e) {
   this.setState({usuario: e.target.value});
-
 };
- subirLogin() {
-   var datosLogin = []
-   datosLogin = ([this.state.usuario, this.state.contrasena]) ;
-  this.props.buscadorUsuarios(datosLogin);
+
+ async subirLogin() {
+   var datosLoginUC = []
+   datosLoginUC = ([this.state.usuario, this.state.contrasena]) ;
+ await this.props.buscadorUsuarios(datosLoginUC);
+ const {LoginDatos} = this.props;
+ if (LoginDatos[0] === false){
+   
+  this.setState({alerta: true})
+      
+}
+
+if (LoginDatos.length !== 0 ){
+  if (LoginDatos[0] !== false){
+   
+   
+
+  this.props.history.goBack();
+ 
   
 }
 
+   }
+}
 
 
+toggle(){
+ this.setState({alerta: false})
 
-    render() {
-        
+
+}
+    render() { 
+ 
+    
         return (
-     
+      
+         
           
-               
             <Fragment>
+           
             <AppBar/>
-            
+            <Alert color="danger" isOpen={this.state.alerta} toggle={this.toggle.bind(this)}>Datos Incorrectos</Alert>
+          
         <div className="modal-dialog text-center">
           <div className="col-sm-12 main-section">
             <div className="modal-content" id="modal-content">
@@ -92,10 +123,11 @@ class Login extends Component {
       
         <div className="modal-dialog text-center">
           <div className="col-sm-12 ">
-            <div id="modal-content">
+            <div className="modal-content"  id="modal-content">
       
               <div className="col-12 forgot1"> 
-              <h5>¿No tienes una cuenta?  <a href="/" id="Registrate">Regístrate</a></h5>
+              <h5>¿No tienes una cuenta? <a id="Registrate" href="#"  onClick={this.redireccionar} >Regístrate</a></h5>
+              
               
           </div>
       
@@ -105,7 +137,7 @@ class Login extends Component {
       
       
       
-      
+        <Footer />
             </Fragment>
             )
     }
@@ -119,8 +151,8 @@ const mapDispatchToProps = {
 };
 const mapStateToProps = (state) => {
   return {
-      buscarImagen: state.buscarImagen,
-      buscarDatosImagen: state.buscarImagenDatos,
+   
+    LoginDatos: state.LoginDatos,
 
 
   };
