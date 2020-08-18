@@ -29,7 +29,7 @@
 	letter-spacing: 2px;
 	padding-left: 54px;
 }
-#icon{
+.icon{
  
 	font-size: 32px;
 	color:#ECE2C6;
@@ -75,18 +75,23 @@
 	color: #daf1ff;
 }
 
- #Registrate{
-	color: #16373f;
-	font-weight: bold;
-	
-}
-#Registrate:hover{
-	color: red;
-	
-	
+
+
+#bottomContainer{
+	margin-bottom: 12px ;
 }
 
-
-
-
-
+.comentario{
+	position: relative;
+	bottom: -17px;
+	  color: rgb(36, 8, 8);
+	  display: none; 
+	
+}
+#datosIncorrectos{
+	position: relative;
+	bottom: -17px;
+	  color: red;
+	  text-decoration: underline rgb(199, 30, 30);
+      display: none; 
+	}

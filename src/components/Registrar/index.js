@@ -1,24 +1,44 @@
 import React, {Component} from 'react';
-import Page from './page';
+import {Page} from './page';
+import {datosRegister} from './page';
+import Axios from 'axios';
 class Registrar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             text: '',
-            SoloNumero:""
+            SoloNumero: []
         };
-        this.isNumberKey = this.isNumberKey.bind(this)
+        this.registrarDatos = this.registrarDatos.bind(this)
     
 }
 
- isNumberKey(e)
+async registrarDatos()
 			{
-                this.setState({ SoloNumero: "e.target.value"});
-                console.log(this.state.SoloNumero)
-               // if (Number.isInteger(y / x)) {
+              if (datosRegister !== "incorrecto") {
+                try {
+              await  Axios({
+                    method:'POST',
+                    url:"http://localhost:3000/usuario",
+                    data:{
+                        nombre: datosRegister[0],
+                        apellido: datosRegister[1],
+                        nombre_usuario: datosRegister[2],
+                        contrasena: datosRegister[4],
+                        edad: datosRegister[7],
+                        genero: datosRegister[8],
+                        numero: datosRegister[6],
+                        correo: datosRegister[3]
+                    }
+                }).then(res => console.log(res.data))
+            } catch (error) {
+                console.log("(Error registrar ususario)",error);
+            }
         
-                 //   return 'Fits!';
-                 // }
+
+              }
+                console.log(datosRegister);
+             
                }
 			
     render() {
@@ -29,7 +49,7 @@ class Registrar extends Component {
           
                
             <Page 
-            isNumberKey={this.isNumberKey}
+            registrarDatos={this.registrarDatos}
             SoloNumero={SoloNumero}
             />
            
