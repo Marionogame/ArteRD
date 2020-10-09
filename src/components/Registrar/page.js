@@ -21,65 +21,66 @@ function Page(props) {
         <div className="col-12 text-center user-img">
           <img src= {face}/>
           <div id="datosIncorrectos">
-            
-          <h3>(Datos Incorrectos)</h3>
+          <h4 className="row" >
+          (<h4 id="datosIncorrectosRaya">Datos Incorrectos</h4>)
+          </h4>
           </div>
         </div>
   
         <div className="col-12 form-input">
         <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-    <div class="form-row">
+  <div className="form-row">
+    <div className="form-group col-md-6">
+    <div className="form-row">
     <span className="icon" id="nombre"><FontAwesomeIcon icon={faUserTie}/></span>
     <h5 id="nombreLarga" className="comentario">(Muy Larga)</h5>
   </div>
-      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Completo"/>
+      <input type="text" className="form-control" id="inputNombre" placeholder="Nombre Completo"/>
     </div>
-    <div class="form-group col-md-6">
-    <div class="form-row">
+    <div className="form-group col-md-6">
+    <div className="form-row">
     <span  className="icon" id="apellido"><FontAwesomeIcon icon={faUserTag}/></span>
     <h5 id="apellidoLarga" className="comentario">(Muy Larga)</h5>
   </div>
-      <input type="text" class="form-control" id="inputApellido" placeholder="Apellido"/>
+      <input type="text" className="form-control" id="inputApellido" placeholder="Apellido"/>
     </div>
   </div>
-  <div class="form-group">
-  <div class="form-row">
+  <div className="form-group">
+  <div className="form-row">
   <span  className="icon"  id="usuario"><FontAwesomeIcon icon={faUsers}/></span>
   <h5 id="usuarioLarga" className="comentario">(Muy Larga)</h5>
   </div>
-    <input type="text" class="form-control" id="inputUsuario" placeholder="Nombre Usuario"/>
+    <input type="text" className="form-control" id="inputUsuario" placeholder="Nombre Usuario"/>
   </div>
-  <div class="form-group">
+  <div className="form-group">
   <span  className="icon"  id="correo"><FontAwesomeIcon icon={faEnvelope}/></span>
-    <input type="text" class="form-control" id="inputCorreo" placeholder="Correo Electronico"/>
+    <input type="text" className="form-control" id="inputCorreo" placeholder="Correo Electronico"/>
   </div>
-  <div class="form-group">
-  <div class="form-row">
+  <div className="form-group">
+  <div className="form-row">
   <span  className="icon" id="contrasena"><FontAwesomeIcon icon={faUnlockAlt}/></span>
   <h5 id="contrasenaCorta" className="comentario">(Muy Corta)</h5>
   <h5 id="contrasenaLarga" className="comentario">(Muy Larga)</h5>
   </div>
-    <input type="password" class="form-control" id="inputContrasena" placeholder="Contrasena"/>
+    <input type="password" className="form-control" id="inputContrasena" placeholder="Contrasena"/>
   </div>
-  <div class="form-group">
+  <div className="form-group">
   <span  className="icon"  id="confirmarContrasena"><FontAwesomeIcon icon={faLock}/></span>
-    <input type="password" class="form-control" id="inputConfirmarContrasena" placeholder="Confirmar Contrasena"/>
+    <input type="password" className="form-control" id="inputConfirmarContrasena" placeholder="Confirmar Contrasena"/>
   </div>
-  <div class="form-group">
+  <div className="form-group">
   <span  className="icon"  id="telefono"><FontAwesomeIcon icon={faPhoneSquareAlt}/></span>
-    <input type="text" class="form-control" id="inputTelefono"  placeholder="Telefono (Solo Numero)"/>
+    <input type="text" className="form-control" id="inputTelefono"  placeholder="Telefono (Solo Numero)"/>
   </div>
 
   
 
   <span className="icon" id="calendario"><FontAwesomeIcon icon={faCalendarAlt}/></span>
-  <div class="form-row">
-  <div class="form-group col-md-4">
+  <div className="form-row">
+  <div className="form-group col-md-4">
     
      <h5><label for="inputState" >Dias</label></h5> 
-      <select id="inputStateDias" class="form-control">
+      <select id="inputStateDias" className="form-control">
         <option selected>Dias</option>
         <option>1</option>
         <option>2</option>
@@ -114,7 +115,7 @@ function Page(props) {
         <option>31</option>
       </select>
     </div>
-    <div class="form-group col-md-4">
+    <div className="form-group col-md-4">
     <h5><label for="inputState">Mes</label></h5>
       <select id="inputStateMes" class="form-control">
         <option selected>Mes</option>
@@ -132,9 +133,9 @@ function Page(props) {
         <option>Diciembre</option>
       </select>
     </div>
-    <div class="form-group col-md-4">
+    <div className="form-group col-md-4">
     <h5> <label for="inputState">Años</label></h5>
-      <select id="inputStateAnos" class="form-control">
+      <select id="inputStateAnos" className="form-control">
         <option selected>Años</option>
         <option>2020</option>
 <option>2019</option>
@@ -261,27 +262,27 @@ function Page(props) {
     </div>
   </div>
   <span  className="icon" id="sexo"><FontAwesomeIcon icon={faVenusMars}/></span>
-  <div class="form-group col-12 ">
-  <div class="form-check form-check-inline col-md-4">
+  <div className="form-group col-12 ">
+  <div className="form-check form-check-inline col-md-4">
    
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-  <h5><label class="form-check-label" for="inlineRadio1">Mujer</label>
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+  <h5><label className="form-check-label" for="inlineRadio1">Mujer</label>
   </h5>
 </div>
-<div class="form-check form-check-inline col-md-4">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <h5><label class="form-check-label" for="inlineRadio2">Hombre</label></h5>
+<div className="form-check form-check-inline col-md-4">
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+  <h5><label className="form-check-label" for="inlineRadio2">Hombre</label></h5>
 </div>
-<div class="form-check form-check-inline  col-md-3">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
-  <h5> <label class="form-check-label" for="inlineRadio3">Personalizado</label></h5>
+<div className="form-check form-check-inline  col-md-3">
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
+  <h5> <label className="form-check-label" for="inlineRadio3">Personalizado</label></h5>
 </div>
   </div>
 
 </form>
 
         </div>
-        <div class="col-12 text-center" >
+        <div className="col-12 text-center" >
   <button className="btn btn-success btn-lg btn-block"  id="bottomContainer" onClick={  () => {DatosRegistro(); registrarDatos()}}  type="button">Registrarte</button>
   </div>
     
@@ -318,6 +319,7 @@ intro = document.getElementById('sexo');
 intro.style.cssText = 'font-size: 32px; color:#ECE2C6; margin-right: 10px; margin-left: 20px;';
 document.getElementById('contrasenaCorta').style.display="none";
 document.getElementById('contrasenaLarga').style.display="none";   
+document.getElementById('datosIncorrectos').style.display="none";
 //cojer valor datos
   const valor = []
   valor[0] = document.getElementById("inputNombre").value; 
@@ -421,6 +423,7 @@ if( valor[2].length > 25){
 }
 
 //correo
+// eslint-disable-next-line no-useless-escape
 var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 if (reg.test(valor[3]) === false || valor[3].length > 50) {
@@ -512,6 +515,7 @@ datosRegister = valor
 if (ingresar === "incorrecto"){
   datosRegister = "incorrecto";
   document.getElementById('datosIncorrectos').style.display="block";
+  window.scroll(0, 0);
 }
 
 

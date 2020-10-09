@@ -91,7 +91,11 @@
 #datosIncorrectos{
 	position: relative;
 	bottom: -17px;
-	  color: red;
-	  text-decoration: underline rgb(199, 30, 30);
-      display: none; 
+	color: red;
+    display: none; 
+	margin: auto;
+	max-width: 180px;
 	}
+#datosIncorrectosRaya{
+	text-decoration: underline rgb(199, 30, 30);
+}

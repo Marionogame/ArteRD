@@ -1,4 +1,6 @@
 import { createAction } from "redux-actions";
+import { connect } from 'react-redux';
+import {datosLogiOnlineEntrada} from "./datosLoginEnlinea";
 const axios = require('axios');
 export const buscarDatosUserSuccess = createAction('buscarDatosUserSuccess');
 export const buscarDatosUserError = createAction('buscarDatosUserError');
@@ -21,8 +23,9 @@ export const buscadorUsuarios = (datosLogin) => async (dispatch) =>{
          
           if (datosLoginCorreo.length !== 0) {
          if (datosLoginCorreo[0].correo === datosLogin[0] && datosLoginCorreo[0].contrasena === datosLogin[1] ){
-           
+          
            dispatch(buscarDatosUserSuccess(datosLoginCorreo));
+           dispatch(datosLogiOnlineEntrada(datosLoginCorreo));
          }else{
           dispatch(buscarDatosUserError());
          }
@@ -35,9 +38,10 @@ export const buscadorUsuarios = (datosLogin) => async (dispatch) =>{
           
           else {
          if (datosLoginUser[0].nombre_usuario === datosLogin[0] && datosLoginUser[0].contrasena === datosLogin[1] ){
-     
+
         dispatch(buscarDatosUserSuccess(datosLoginUser));
-    
+        dispatch(datosLogiOnlineEntrada(datosLoginUser));
+        
        } else {
         dispatch(buscarDatosUserError());
        }
@@ -51,4 +55,8 @@ export const buscadorUsuarios = (datosLogin) => async (dispatch) =>{
         console.log("(Error action buscadorImagen)",error);
     }
   }
-  
+  const mapDispatchToProps = {
+
+    datosLogiOnlineEntrada,
+  };
+  export default connect(mapDispatchToProps);

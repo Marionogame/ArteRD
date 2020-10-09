@@ -1,6 +1,8 @@
 const Models = require('../models/index');
-const Joi = require("joi");
+const path = require("path");
 
+const Joi = require("joi");
+const fs = require("fs");
 const usuariosHandler = async (request, h) => {
     try {
         const usuarios = await Models.Usuario.findAll({})
@@ -89,6 +91,26 @@ const deleteUsuarioHandler = async (request, h) => {
             error: error.message
         }).code(400)
     }
+
+    
+}
+const deleteImageUsuarioHandler = async(request, h) => {
+ 
+    try {
+    
+        const imagen_name = request.params.id;
+        const path =__dirname + `/../almacen_imagenes/perfil/${imagen_name}`;
+
+        fs.unlinkSync(path)
+      //file removed
+      return { message: 'image has been deleted.' }
+    } catch(err) {
+      return h.response({
+            error: err.message
+        }).code(400)
+    }
+    
+    
 }
 
 
@@ -120,7 +142,9 @@ module.exports = [
         }}}, 
     handler: createUsuarioHandler },
     { method: 'PUT', path: '/usuario/{id}', config: {
+        
         validate: {
+         
         payload: Joi.object({
             nombre: Joi.string().min(3).max(25).optional(),
             apellido: Joi.string().min(3).max(25).optional(),
@@ -143,5 +167,9 @@ module.exports = [
         }}},  handler: updateUsuarioHandler },
     { method: 'DELETE', path: '/usuario/{id}', handler: deleteUsuarioHandler },
         { method: 'GET', path: '/todoi/{id}', handler: {  directory: { path: '../almacen_imagenes', listing: false}}},
+        { method: 'DELETE', path: '/imagen/{id}', handler: deleteImageUsuarioHandler},
+        { method: 'GET', path: '/imagen/{id}', handler: {  directory: { path: '../almacen_imagenes/perfil', listing: false}}},
         { method: 'GET',  path: '/todou/{id}', handler: (request, h) => {return h.file('../almacen_imagenes/aqui/imagen1.jpg')}},
+        
+        
 ];

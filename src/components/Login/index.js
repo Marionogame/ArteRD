@@ -8,7 +8,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserTie,faKey} from '@fortawesome/free-solid-svg-icons';
 import {Alert} from "reactstrap";
 import Footer from '../footer';
-
+import { Provider } from 'react-redux';
+import { store } from '../../redux/store';
 
 class Login extends Component {
     constructor(props) {
@@ -47,6 +48,7 @@ class Login extends Component {
    datosLoginUC = ([this.state.usuario, this.state.contrasena]) ;
  await this.props.buscadorUsuarios(datosLoginUC);
  const {LoginDatos} = this.props;
+
  if (LoginDatos[0] === false){
    
   this.setState({alerta: true})
@@ -56,9 +58,7 @@ class Login extends Component {
 if (LoginDatos.length !== 0 ){
   if (LoginDatos[0] !== false){
    
-   
-
-  this.props.history.goBack();
+    // this.props.history.goBack();
  
   
 }
@@ -78,7 +78,7 @@ toggle(){
         return (
       
          
-          
+          <Provider store={store}>
             <Fragment>
            
             <AppBar/>
@@ -109,6 +109,7 @@ toggle(){
                   </div>
                   </div>
                 <button className="btn btn-success" type="button" onClick={this.subirLogin}>Login</button>
+                
                 </form>
               </div>
       
@@ -139,6 +140,7 @@ toggle(){
       
         <Footer />
             </Fragment>
+            </Provider>
             )
     }
     
@@ -157,5 +159,8 @@ const mapStateToProps = (state) => {
 
   };
 };
+
+
+
 export default connect(mapStateToProps,mapDispatchToProps)(Login);
 
