@@ -1,22 +1,35 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Fragment } from 'react';
 import './style.css';
-import usuario from '../../img/usuario.png';
-import fondoPintura from '../../img/fondoPintura.jpg';
+
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUpload} from '@fortawesome/free-solid-svg-icons';
-import ArtistaPintando from '../../img/ArtistaPintando.jpg';
+import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
+
 
 
 function Info(props) {
   const {
     guardarImagen,
-    LoginDatos,
-    imagen,
     EliminarImagenAnterior,
-    datosLoginOnline
+    datosLoginOnline,
+    NavRegister,
+    buscarImagenPerfil
 } = props;
-
+//mostrar redes si tienen
+var redes1None = "block";
+var redes2None = "block";
+var redes3None = "block";
+if (datosLoginOnline[0].redes1 === "https://www.ArteRD.com"){
+  redes1None = "none";
+}
+if (datosLoginOnline[0].redes2 === "https://www.ArteRD.com"){
+ redes2None = "none";
+}
+if (datosLoginOnline[0].redes3 === "https://www.ArteRD.com"){
+  redes3None = "none";
+}
   
     return (
         
@@ -24,24 +37,26 @@ function Info(props) {
             <div>
        <div id="contenedor"   onMouseMove={  () => {mostrarCarga(); }}  onMouseOut={  () => {esconderCarga(); }}> 
              <div>
-      <img src={datosLoginOnline[1][0]} width="115" height="115" ></img>
+      <img src={buscarImagenPerfil} width="115" height="115" id="imagenPeril"></img>
    
    <div id="centradoFondo" onMouseMove={  () => {mostrarCarga(); }}></div>
-   <a href="#" id="centrado"  data-toggle="modal" data-target="#exampleModal">cargar imagen</a>
+   <span  id="centrado"  data-toggle="modal" data-target="#exampleModal">cargar imagen</span>
   <div><FontAwesomeIcon id="subirImagen" icon={faUpload}/></div>
        </div>
        </div>
        <div id="contenedorLinea" ></div>
        <div id="contenedorBottom" onMouseEnter={  () => {esconderCarga(); }}> 
-  
-         <h4>Mario Jose Espaillat Morey</h4>
-         <ul class="list-group">
-  <li class="list-group-item" id="fondoDatosInfo">Informacion</li>
-    <li class="list-group-item" id="fondoDatos"><h4>{datosLoginOnline[0].numero}</h4></li>
-  <li class="list-group-item" id="fondoDatos"><h4>Correo</h4></li>
-  <li class="list-group-item" id="fondoDatos"><h4>Redes 1</h4></li>
-  <li class="list-group-item" id="fondoDatos"><h4>redes 2</h4></li>
-  <li class="list-group-item" id="fondoDatos"><h4>redes 3</h4></li>
+         <div className="ml-2">
+         <h4 id="TitleName">{datosLoginOnline[0].nombre} {datosLoginOnline[0].apellido}</h4>
+         </div>
+         <ul className="list-group">
+       
+  <li className="list-group-item  text-center" id="fondoDatosInfo" ><h4 onClick={() => {NavRegister();}} id="editarIndoTitle">Actualizar Informacion  <span><FontAwesomeIcon icon={faPencilAlt}/></span></h4></li> 
+    <li className="list-group-item" id="fondoDatos"><h4 id="TitleLetraList">Tel: <div id="LetraList">{datosLoginOnline[0].numero}</div></h4></li>
+  <li className="list-group-item"   id="fondoDatos"><h4 id="TitleLetraList">Correo: <div id="LetraList">{datosLoginOnline[0].correo}</div></h4></li>
+  <li className="list-group-item" id="fondoDatos" style={{display: redes1None}}><h4 id="TitleLetraList">Redes: <div  id="LetraList">{datosLoginOnline[0].redes1}</div></h4></li>
+  <li className="list-group-item" id="fondoDatos" style={{display: redes2None}}><h4 id="TitleLetraList">Redes: <div id="LetraList">{datosLoginOnline[0].redes2}</div></h4></li>
+  <li className="list-group-item" id="fondoDatos" style={{display: redes3None}}><h4 id="TitleLetraList">Redes: <div id="LetraList">{datosLoginOnline[0].redes3}</div></h4></li>
   
 </ul>
  
@@ -50,37 +65,33 @@ function Info(props) {
        </div>
        </div>
 
-       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Imagen De Perfil</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Imagen De Perfil</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div className="modal-body">
       <input type="file"  name="image" id="image"  accept="image/*"/>
       <hr></hr>
       <div className="row">
       <div className="col-md-6">
-      <button type="button" class="btn btn-danger" id="buttomEliminarP" onClick={  () => {EliminarImagenAnterior(); }} >Eliminar Antigua</button>
+      <button type="button" className="btn btn-danger" id="buttomEliminarP" onClick={  () => {EliminarImagenAnterior(); }} >Eliminar Antigua</button>
      
         </div>
         <div className="col-md-6">
-        <button type="button" class="btn btn-secondary" id="buttomCerralM"data-dismiss="modal">Cerrar</button>
-        <button  class="btn btn-primary" type="submit"  id="buttomGuardarCambios" onClick={  () => {enviarImagen();guardarImagen(); }}>Guardar Imagen</button>
+        <button type="button" className="btn btn-secondary" id="buttomCerralM"data-dismiss="modal">Cerrar</button>
+        <button  className="btn btn-primary" type="submit"  id="buttomGuardarCambios" onClick={  () => {enviarImagen();guardarImagen(); }} data-dismiss="modal">Guardar Imagen</button>
         </div>
         </div>
-
-   
- 
       </div>
-     
     </div>
   </div>
 </div>
-      
+    
         </Fragment>
     );
 }

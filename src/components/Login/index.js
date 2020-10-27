@@ -89,7 +89,7 @@ toggle(){
             <div className="modal-content" id="modal-content">
       
               <div className="col-12 user-img">
-                <img src={face}/>
+                <img src={face} alt="imagen Perfil"/>
               </div>
       
               <div className="col-12 form-input">
@@ -114,7 +114,7 @@ toggle(){
               </div>
       
               <div className="col-12 forgot">
-                <a href="#">Forgot Password?</a>
+                <a href="/#">Forgot Password?</a>
           </div>
       
             </div>
@@ -127,7 +127,7 @@ toggle(){
             <div className="modal-content"  id="modal-content">
       
               <div className="col-12 forgot1"> 
-              <h5>¿No tienes una cuenta? <a id="Registrate" href="#"  onClick={this.redireccionar} >Regístrate</a></h5>
+              <h5>¿No tienes una cuenta? <span id="Registrate" href="/#"  onClick={this.redireccionar} >Regístrate</span></h5>
               
               
           </div>

@@ -38,7 +38,11 @@
   color:#1d5563;
  }
 
-
+ span{
+ 
+  
+  cursor:pointer;
+  }
 
 /*#black{
     background-color: yellow;

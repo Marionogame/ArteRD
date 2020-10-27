@@ -4,12 +4,13 @@ import { datosUserOnlineSuccess, buscarImagenError } from "../actions/datosLogin
 export default handleActions ({
     [datosUserOnlineSuccess]: (state, actions) => {
         var datosUsuarioOnline = actions.payload;
-        console.log("reducer:", datosUsuarioOnline);
+   
+    console.log("reducer:", datosUsuarioOnline);
        
         return datosUsuarioOnline;
     },
     [buscarImagenError]: (state, actions) => {
-        return [1,4,3];
+        return console.log("buscar imagen reducer Login Online");
     }
     
 

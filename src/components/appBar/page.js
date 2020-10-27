@@ -9,13 +9,14 @@ function Page(props) {
         suggestions,
         onChangeText,
         onChangeSelection,
+        PerfilDirecional,
         goTo
     } = props;
     var camilo= "Selecion";
     return (
         
 <nav className="navbar navbar-expand-lg navbar-light py-0"  id="navbar">
-  <a className="navbar-brand" href="#" id='filtro' onClick={() => goTo('/inicio')}>ArteRD</a>
+  <span className="navbar-brand"  id='filtro' onClick={() => goTo('/inicio')}>ArteRD</span>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -23,10 +24,10 @@ function Page(props) {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto" id={camilo} >
       <li className="nav-item active">
-        <a className="nav-link"  href="/" id='filtro'>NOTICIA<span className="sr-only"  >(current)</span></a>
+        <span className="nav-link"  id='filtro'>NOTICIA<span className="sr-only"  >(current)</span></span>
       </li>
       <li className="nav-item">
-  <a className="nav-link" href="#" id='filtro' onClick={() => goTo('/descubrir')}>DESCUBRE</a>
+  <span className="nav-link" id='filtro' onClick={() => goTo('/descubrir')}>DESCUBRE</span>
       </li>
      
     </ul>
@@ -38,8 +39,8 @@ function Page(props) {
                  onChangeSelection={onChangeSelection} />
                 
       
-      <div id='iconNav1'><FontAwesomeIcon icon={faCartArrowDown}/></div>
-      <div id='iconNav' onClick={() => goTo('/Login')}><FontAwesomeIcon icon={faUser}/></div>
+      <span id='iconNav1' onClick={() =>{PerfilDirecional();}}><FontAwesomeIcon icon={faCartArrowDown}/></span>
+      <span id='iconNav' onClick={() => goTo('/Login')}><FontAwesomeIcon icon={faUser}/></span>
     </form>
   </div>
 </nav>

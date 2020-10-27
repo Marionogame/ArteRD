@@ -3,13 +3,60 @@ import './style.css';
 import AppBar from '../appBar';
 import face from '../../img/face.png';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUserTie,faUnlockAlt,faUsers,faLock,faPhoneSquareAlt,faCalendarAlt,faVenusMars,faUserTag,faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import {faUserTie,faUnlockAlt,faUsers,faLock,faPhoneSquareAlt,faCalendarAlt,faVenusMars,faUserTag,faPager} from '@fortawesome/free-solid-svg-icons';
 import Footer from '../footer';
 function Page(props) {
   const {
     registrarDatos,
-
+    datosLoginOnline
 } = props;
+//cambiar numero mes a nombre mes
+var MesN = datosLoginOnline[0].edad.slice(5,-3);
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "01" ? "Enero" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "02" ? "Febrero" : MesN;
+MesN= datosLoginOnline[0].edad.slice(5,-3) === "03" ? "Marzo" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "04" ? "Abril" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "05" ? "Mayo" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "06" ? "Junio" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "07" ? "Julio" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "08" ? "Agosto" : MesN;
+MesN= datosLoginOnline[0].edad.slice(5,-3) === "09" ? "Septiembre" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "10" ? "Octubre" : MesN;
+MesN= datosLoginOnline[0].edad.slice(5,-3) === "11" ? "Noviembre" : MesN;
+MesN = datosLoginOnline[0].edad.slice(5,-3) === "12" ? "Diciembre" : MesN;
+
+//activar checked
+var femenino = false;
+var masculino = false;
+var otros = false;
+
+if (datosLoginOnline[0].genero === "F"){
+  femenino = true;
+}
+if (datosLoginOnline[0].genero === "M"){
+  masculino = true;
+}
+if (datosLoginOnline[0].genero === "O"){
+  otros = true;
+}
+//validar el nulo
+var redes1V = datosLoginOnline[0].redes1 ;
+var redes2V = datosLoginOnline[0].redes2 ;
+var redes3V = datosLoginOnline[0].redes3 ;
+if (datosLoginOnline[0].redes1 === "https://www.ArteRD.com"){
+  redes1V  = "";
+
+}
+if (datosLoginOnline[0].redes2 === "https://www.ArteRD.com"){
+  redes2V  = "";
+
+}
+if (datosLoginOnline[0].redes3 === "https://www.ArteRD.com"){
+  redes3V  = "";
+
+}
+
+
     return (
       <Fragment>
       <AppBar/>
@@ -19,7 +66,7 @@ function Page(props) {
       <div className="modal-content" id="modal-content">
 
         <div className="col-12 text-center user-img">
-          <img src={face} alt="Logo perfil" />
+          <img src= {face}  alt="Arte Imagen Perfil"/>
           <div id="datosIncorrectos">
           <h4 className="row" >
           (<h4 id="datosIncorrectosRaya">Datos Incorrectos</h4>)
@@ -34,15 +81,16 @@ function Page(props) {
     <div className="form-row">
     <span className="icon" id="nombre"><FontAwesomeIcon icon={faUserTie}/></span>
     <h5 id="nombreLarga" className="comentario">(Muy Larga)</h5>
-  </div>
-      <input type="text" className="form-control" id="inputNombre" placeholder="Nombre Completo"/>
+  </div> 
+      <input type="text" className="form-control" id="inputNombre" placeholder="Nombre Completo" defaultValue={datosLoginOnline[0].nombre}/>
+     
     </div>
     <div className="form-group col-md-6">
     <div className="form-row">
     <span  className="icon" id="apellido"><FontAwesomeIcon icon={faUserTag}/></span>
     <h5 id="apellidoLarga" className="comentario">(Muy Larga)</h5>
   </div>
-      <input type="text" className="form-control" id="inputApellido" placeholder="Apellido"/>
+      <input type="text" className="form-control" id="inputApellido" placeholder="Apellido" defaultValue={datosLoginOnline[0].apellido} />
     </div>
   </div>
   <div className="form-group">
@@ -50,29 +98,46 @@ function Page(props) {
   <span  className="icon"  id="usuario"><FontAwesomeIcon icon={faUsers}/></span>
   <h5 id="usuarioLarga" className="comentario">(Muy Larga)</h5>
   </div>
-    <input type="text" className="form-control" id="inputUsuario" placeholder="Nombre Usuario"/>
+    <input type="text" className="form-control" id="inputUsuario" placeholder="Nombre Usuario" defaultValue={datosLoginOnline[0].nombre_usuario}/>
   </div>
-  <div className="form-group">
-  <span  className="icon"  id="correo"><FontAwesomeIcon icon={faEnvelope}/></span>
-    <input type="text" className="form-control" id="inputCorreo" placeholder="Correo Electronico"/>
-  </div>
+
   <div className="form-group">
   <div className="form-row">
   <span  className="icon" id="contrasena"><FontAwesomeIcon icon={faUnlockAlt}/></span>
   <h5 id="contrasenaCorta" className="comentario">(Muy Corta)</h5>
   <h5 id="contrasenaLarga" className="comentario">(Muy Larga)</h5>
   </div>
-    <input type="password" className="form-control" id="inputContrasena" placeholder="Contrasena"/>
+    <input type="password" className="form-control" id="inputContrasena" placeholder="Contrasena" defaultValue={datosLoginOnline[0].contrasena}/>
   </div>
   <div className="form-group">
   <span  className="icon"  id="confirmarContrasena"><FontAwesomeIcon icon={faLock}/></span>
-    <input type="password" className="form-control" id="inputConfirmarContrasena" placeholder="Confirmar Contrasena"/>
+    <input type="password" className="form-control" id="inputConfirmarContrasena" placeholder="Confirmar Contrasena" defaultValue={datosLoginOnline[0].contrasena}/>
   </div>
   <div className="form-group">
   <span  className="icon"  id="telefono"><FontAwesomeIcon icon={faPhoneSquareAlt}/></span>
-    <input type="text" className="form-control" id="inputTelefono"  placeholder="Telefono (Solo Numero)"/>
+    <input type="text" className="form-control" id="inputTelefono"  placeholder="Telefono (Solo Numero)" defaultValue={datosLoginOnline[0].numero}/>
   </div>
+  <div className="form-group">
+  <div className="form-row">
+  <span  className="icon"  id="IconRedes1"><FontAwesomeIcon icon={faPager}/></span>
 
+  </div>
+    <input type="text" className="form-control" id="inputRedes1" placeholder="Redes1" defaultValue={redes1V}/>
+  </div>
+  <div className="form-group">
+  <div className="form-row">
+  <span  className="icon"  id="IconRedes2"><FontAwesomeIcon icon={faPager}/></span>
+
+  </div>
+    <input type="text" className="form-control" id="inputRedes2" placeholder="Redes2" defaultValue={redes2V}/>
+  </div>
+  <div className="form-group">
+  <div className="form-row">
+  <span  className="icon"  id="IconRedes3"><FontAwesomeIcon icon={faPager}/></span>
+
+  </div>
+    <input type="text" className="form-control" id="inputRedes3" placeholder="Redes3" defaultValue={redes3V}/>
+  </div>
   
 
   <span className="icon" id="calendario"><FontAwesomeIcon icon={faCalendarAlt}/></span>
@@ -81,7 +146,7 @@ function Page(props) {
     
      <h5><label for="inputState" >Dias</label></h5> 
       <select id="inputStateDias" className="form-control">
-        <option selected>Dias</option>
+        <option selected>{datosLoginOnline[0].edad.slice(-2) }</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -118,7 +183,7 @@ function Page(props) {
     <div className="form-group col-md-4">
     <h5><label for="inputState">Mes</label></h5>
       <select id="inputStateMes" class="form-control">
-        <option selected>Mes</option>
+        <option selected>{MesN}</option>
         <option>Enero</option>
         <option>Febrero</option>
         <option>Marzo</option>
@@ -136,7 +201,7 @@ function Page(props) {
     <div className="form-group col-md-4">
     <h5> <label for="inputState">Años</label></h5>
       <select id="inputStateAnos" className="form-control">
-        <option selected>Años</option>
+        <option selected >{datosLoginOnline[0].edad.slice(0, -6) }</option>
         <option>2020</option>
 <option>2019</option>
 <option>2018</option>
@@ -265,16 +330,16 @@ function Page(props) {
   <div className="form-group col-12 ">
   <div className="form-check form-check-inline col-md-4">
    
-  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" defaultChecked={femenino} />
   <h5><label className="form-check-label" for="inlineRadio1">Mujer</label>
   </h5>
 </div>
 <div className="form-check form-check-inline col-md-4">
-  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" defaultChecked={masculino} />
   <h5><label className="form-check-label" for="inlineRadio2">Hombre</label></h5>
 </div>
 <div className="form-check form-check-inline  col-md-3">
-  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" defaultChecked={otros} />
   <h5> <label className="form-check-label" for="inlineRadio3">Personalizado</label></h5>
 </div>
   </div>
@@ -284,6 +349,9 @@ function Page(props) {
         </div>
         <div className="col-12 text-center" >
   <button className="btn btn-success btn-lg btn-block"  id="bottomContainer" onClick={  () => {DatosRegistro(); registrarDatos()}}  type="button">Registrarte</button>
+
+
+
   </div>
     
       </div>
@@ -295,7 +363,7 @@ function Page(props) {
    );
     
 }
-var datosRegister = []
+var datosActRegister = []
 function DatosRegistro() {
   var ingresar = "correcto";
   //color reiniciar 
@@ -304,8 +372,6 @@ function DatosRegistro() {
   intro = document.getElementById('apellido');
   intro.style.cssText = 'font-size: 32px; color:#ECE2C6; margin-right: 10px; margin-left: 20px;';
   intro = document.getElementById('usuario');
-  intro.style.cssText = 'font-size: 32px; color:#ECE2C6; margin-right: 10px; margin-left: 20px;';
-  intro = document.getElementById('correo');
   intro.style.cssText = 'font-size: 32px; color:#ECE2C6; margin-right: 10px; margin-left: 20px;';
   intro = document.getElementById('contrasena');
   intro.style.cssText = 'font-size: 32px; color:#ECE2C6; margin-right: 10px; margin-left: 20px;';
@@ -325,11 +391,12 @@ document.getElementById('datosIncorrectos').style.display="none";
   valor[0] = document.getElementById("inputNombre").value; 
   valor[1] = document.getElementById("inputApellido").value; 
   valor[2] = document.getElementById("inputUsuario").value;
-  valor[3] = document.getElementById("inputCorreo").value;  
   valor[4] = document.getElementById("inputContrasena").value; 
   valor[5] = document.getElementById("inputConfirmarContrasena").value; 
   valor[6] = document.getElementById("inputTelefono").value; 
-  
+  valor[9] = document.getElementById("inputRedes1").value; 
+  valor[10] = document.getElementById("inputRedes2").value; 
+  valor[11] = document.getElementById("inputRedes3").value; 
 
   //procedimiendo fecha
   var dias = "";
@@ -342,37 +409,37 @@ document.getElementById('datosIncorrectos').style.display="none";
 
 
   if (mes === "Enero"){
-   mes = "1";
+   mes = "01";
 }
 if (mes === "Febrero"){
-  mes = "2";
+  mes = "02";
 }
 if (mes === "Marzo"){
-  mes = "3";
+  mes = "03";
 }
 
 if (mes === "Abril"){
-  mes = "4";
+  mes = "04";
 }
 
 if (mes === "Mayo"){
-  mes = "5";
+  mes = "05";
 }
 
 if (mes === "Junio"){
-  mes = "6";
+  mes = "06";
 }
 
 if (mes === "Julio"){
-  mes = "7";
+  mes = "07";
 }
 
 if (mes === "Agosto"){
-  mes = "8";
+  mes = "08";
 }
 
 if (mes === "Septiembre"){
-  mes = "9";
+  mes = "09";
 }
 
 if (mes === "Octubre"){
@@ -422,15 +489,7 @@ if( valor[2].length > 25){
   document.getElementById('usuarioLarga').style.display="block";
 }
 
-//correo
-// eslint-disable-next-line no-useless-escape
-var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-if (reg.test(valor[3]) === false || valor[3].length > 50) {
-  intro = document.getElementById('correo');
-  intro.style.cssText = 'font-size: 32px; color:red; margin-right: 10px; margin-left: 20px;';
-  ingresar = "incorrecto";
-}
 //contrasena
 var espacios = false;
 var cont = 0;
@@ -494,8 +553,34 @@ if (valor[8] === "ninguno"){
   intro.style.cssText = 'font-size: 32px; color:red; margin-right: 10px; margin-left: 20px;';
   ingresar = "incorrecto";
 }
-//mensaje
+//Redes
+if (valor[9] === ""){
+  valor[9] = "https://www.ArteRD.com"
 
+}
+if (valor[10] === ""){
+  valor[10] = "https://www.ArteRD.com"
+
+}
+if (valor[11] === ""){
+  valor[11] = "https://www.ArteRD.com"
+
+}
+if (valor[9].length > 100) {
+  intro = document.getElementById('IconRedes1');
+  intro.style.cssText = 'font-size: 32px; color:red; margin-right: 10px; margin-left: 20px;';
+  ingresar = "incorrecto";
+}
+if (valor[10].length > 100) {
+  intro = document.getElementById('IconRedes2');
+  intro.style.cssText = 'font-size: 32px; color:red; margin-right: 10px; margin-left: 20px;';
+  ingresar = "incorrecto";
+}
+if (valor[11].length > 100) {
+  intro = document.getElementById('IconRedes3');
+  intro.style.cssText = 'font-size: 32px; color:red; margin-right: 10px; margin-left: 20px;';
+  ingresar = "incorrecto";
+}
  
 
 
@@ -509,19 +594,23 @@ valor[5] = confirmar contrasena
 valor[6] = telefono
 valor[7] = fecha
 valor[8] = sexo
+valor[9] = redes1
+valor[10] = redes2
+valor[11] = redes3
 */
 //registrar usuario
-datosRegister = valor
+
+datosActRegister = valor
 if (ingresar === "incorrecto"){
-  datosRegister = "incorrecto";
+  datosActRegister = "incorrecto";
   document.getElementById('datosIncorrectos').style.display="block";
   window.scroll(0, 0);
 }
 
 
 
-return datosRegister;
+return datosActRegister;
 }
 
 
-export {Page,datosRegister};
+export {Page,datosActRegister};

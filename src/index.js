@@ -10,6 +10,7 @@ import Descubrir from './components/descubrir';
 import Login from './components/Login';
 import Registrar from './components/registrar';
 import Perfil from './components/perfil';
+import UsuarioAct from './components/usuarioAct';
 import './include/Bootstrap';
 
 const Root = (
@@ -23,7 +24,8 @@ const Root = (
         <Route path="/Login" component={Login} />
         <Route path="/registrar" component={Registrar} />
         <Route path="/perfil" component={Perfil} />
-        <Redirect from= "/" to="/perfil" />
+        <Route path="/usuarioAct" component={UsuarioAct} />
+        <Redirect from= "/" to="/usuarioAct" />
     </Switch>
     </BrowserRouter>
     </Provider>

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {file1} from './info';
 import {buscadorImagen} from '../../redux/actions/buscadorImagen';
 import {datosLogiOnlineEntrada} from '../../redux/actions/datosLoginEnlinea';
-
+import {imagenPerfilID} from '../../redux/actions/buscadorImagenPerfil';
 
 const axios = require('axios');
 
@@ -21,7 +21,7 @@ class Perfil extends Component {
         };
         this.guardarImagen = this.guardarImagen.bind(this);
         this.EliminarImagenAnterior = this.EliminarImagenAnterior.bind(this);
-        
+        this.NavRegister = this.NavRegister.bind(this);
         
     }
     
@@ -103,7 +103,8 @@ var datosLoginOnlineActualizadoSubir = data.filter(data => data.id === datosLogi
 
 
     this.props.datosLogiOnlineEntrada(datosLoginOnlineActualizadoSubir);
-
+//actualizando datosLoginOnlineActualizadoSubir
+    this.props.imagenPerfilID(datosLoginOnlineActualizadoSubir[0]);
 } 
 async EliminarImagenAnterior(){
     const {datosLoginOnline} = this.props; 
@@ -146,13 +147,16 @@ var datosLoginOnlineActualizadoSubir = data.filter(data => data.id === datosLogi
 
 
     this.props.datosLogiOnlineEntrada(datosLoginOnlineActualizadoSubir);
+    //actualizando datosLoginOnlineActualizadoSubir
+    this.props.imagenPerfilID(datosLoginOnlineActualizadoSubir[0]);
+}
+NavRegister(){
+this.props.history.push("/usuarioAct");
 }
 
-
 async componentDidMount () {
-this.props.buscadorImagen("esculturas");
-
-}    
+    this.props.buscadorImagen("esculturas");
+ }
 
 
 render() {
@@ -161,13 +165,17 @@ render() {
     const {categoria} = this.state;
     const {imagen} = this.state;
     const {datosLoginOnline} = this.props;
-    
+    const {buscarImagenPerfil} = this.props;
            if (buscarImagen.length === 0 ){
                 return "cargando"
              }
-        if (datosLoginOnline.length === 0 ){
+           if (datosLoginOnline.length === 0 ){
              return "cargando"
             }
+           if (buscarImagenPerfil.length === 0 ){
+                return "cargando"
+               }
+            
            
          
    
@@ -178,11 +186,13 @@ render() {
             <Page
              buscarImagen={buscarImagen}
              buscarDatosImagen={buscarDatosImagen}
+             buscarImagenPerfil={buscarImagenPerfil}
              guardarImagen={this.guardarImagen}
              categoria={categoria}
              imagen={imagen}
              EliminarImagenAnterior={this.EliminarImagenAnterior}
              datosLoginOnline={datosLoginOnline}
+             NavRegister={this.NavRegister}
             />
             </Fragment>
         );
@@ -194,6 +204,7 @@ const mapStateToProps = (state) => {
         buscarImagen: state.buscarImagen,
         buscarDatosImagen: state.buscarImagenDatos,
         datosLoginOnline: state.datosLoginOnline,
+        buscarImagenPerfil: state.buscarImagenPerfil
 
     };
 };
@@ -201,6 +212,8 @@ const mapDispatchToProps = {
 
     buscadorImagen,
     datosLogiOnlineEntrada,
+    imagenPerfilID,
+    
 };
   
 

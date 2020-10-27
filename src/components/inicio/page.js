@@ -28,7 +28,7 @@ function Page(props) {
           <div className="card  text-center" id="CardCuerpo" >
           <h1 className="card-text font-weight-light" >Noticias RD</h1>
   
-  <img className="card-img-top " src={ojosNoticia} id="img" alt="Card image cap"/>
+  <img className="card-img-top " src={ojosNoticia} id="img"  alt="Noticia RD Imagen"/>
    </div> 
     </div>  
    
@@ -37,7 +37,7 @@ function Page(props) {
           <div className="card  text-center"  id="CardCuerpo" onClick={() => goTo('/descubrir')}>
           <h1 className="card-text font-weight-light" >Descubre</h1>
   
-  <img className="card-img-top " src={ArtistaPintando} id="img" alt="Card image cap"/>
+  <img className="card-img-top " src={ArtistaPintando} id="img"  alt="Descubrir RD Imagen"/>
    </div> 
    
    </div> 
